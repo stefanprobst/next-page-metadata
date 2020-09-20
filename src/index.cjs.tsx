@@ -8,3 +8,13 @@ import PageMetadata from './PageMetadata'
 Object.assign(PageMetadata, { JsonLd, createJsonLd })
 export default PageMetadata
 export type { PageMetadataProps } from './PageMetadata'
+export type {
+  PageMetadata,
+  OpenGraphArticle,
+  OpenGraphImage,
+  OpenGraphMetadata,
+  OpenGraphProfile,
+  TwitterImage,
+  TwitterMetadata,
+} from './types'
+export type { Schema } from './JsonLd'
