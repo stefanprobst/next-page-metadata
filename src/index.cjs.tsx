@@ -7,3 +7,4 @@ import JsonLd, { createJsonLd } from './JsonLd'
 import PageMetadata from './PageMetadata'
 Object.assign(PageMetadata, { JsonLd, createJsonLd })
 export default PageMetadata
+export type { PageMetadataProps } from './PageMetadata'

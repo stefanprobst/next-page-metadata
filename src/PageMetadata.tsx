@@ -8,7 +8,7 @@ import type {
   TwitterMetadata,
 } from './types'
 
-type PageMetadataProps = PageMetadata
+export type PageMetadataProps = PageMetadata
 
 export default function PageMetadata(props: PageMetadataProps): JSX.Element {
   const metadata = []
