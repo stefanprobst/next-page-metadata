@@ -26,7 +26,7 @@ export default function PageMetadata(props: PageMetadataProps): JSX.Element {
   } = props
 
   const pageTitle =
-    typeof titleTemplate === 'function' ? titleTemplate(title ?? '') : title
+    typeof titleTemplate === 'function' ? titleTemplate(title) : title
 
   if (pageTitle) {
     metadata.push(<title>{pageTitle}</title>)
