@@ -56,8 +56,10 @@ export default function PageMetadata(props: PageMetadataProps): JSX.Element {
         title: openGraph.title || pageTitle,
         description: openGraph.description || description,
         localeAlternates:
-          openGraph.localeAlternates ??
-          languageAlternates?.map(({ hrefLang }) => hrefLang),
+          openGraph.localeAlternates != null
+            ? openGraph.localeAlternates
+            : languageAlternates &&
+              languageAlternates.map(({ hrefLang }) => hrefLang),
       }),
     )
   }
