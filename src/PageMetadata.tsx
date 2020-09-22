@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import * as React from 'react'
 import type {
   OpenGraphArticle,
   OpenGraphImage,

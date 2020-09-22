@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import * as React from 'react'
 import type { Thing, WithContext } from 'schema-dts'
 
 /**
