@@ -30,24 +30,35 @@ export default function PageMetadata(props: PageMetadataProps): JSX.Element {
     typeof titleTemplate === 'function' ? titleTemplate(title) : title
 
   if (pageTitle) {
-    metadata.push(<title>{pageTitle}</title>)
+    metadata.push(<title key="title">{pageTitle}</title>)
   }
   if (description) {
-    metadata.push(<meta name="description" content={description} />)
+    metadata.push(
+      <meta name="description" content={description} key="description" />,
+    )
   }
   if (canonicalUrl) {
-    metadata.push(<link rel="canonical" href={canonicalUrl} />)
+    metadata.push(<link rel="canonical" href={canonicalUrl} key="canonical" />)
   }
   if (Array.isArray(languageAlternates)) {
     languageAlternates.forEach(({ hrefLang, href }) => {
-      metadata.push(<link rel="alternate" hrefLang={hrefLang} href={href} />)
+      metadata.push(
+        <link
+          rel="alternate"
+          hrefLang={hrefLang}
+          href={href}
+          key={`alternate:${hrefLang}`}
+        />,
+      )
     })
   }
   if (noindex || nofollow) {
     const content = []
     if (noindex) content.push('noindex')
     if (nofollow) content.push('nofollow')
-    metadata.push(<meta name="robots" content={content.join(',')} />)
+    metadata.push(
+      <meta name="robots" content={content.join(',')} key="robots" />,
+    )
   }
   if (openGraph) {
     metadata.push(
@@ -160,25 +171,47 @@ function createTwitterhMetadata(props: TwitterMetadata) {
   const { title, description, image, cardType, site, handle } = props
 
   if (title) {
-    metadata.push(<meta name="twitter:title" content={title} />)
+    metadata.push(
+      <meta name="twitter:title" content={title} key="twitter:title" />,
+    )
   }
   if (description) {
-    metadata.push(<meta name="twitter:description" content={description} />)
+    metadata.push(
+      <meta
+        name="twitter:description"
+        content={description}
+        key="twitter:description"
+      />,
+    )
   }
   if (image) {
-    metadata.push(<meta name="twitter:image" content={image.src} />)
+    metadata.push(
+      <meta name="twitter:image" content={image.src} key="twitter:image" />,
+    )
     if (image.alt) {
-      metadata.push(<meta name="twitter:image:alt" content={image.alt} />)
+      metadata.push(
+        <meta
+          name="twitter:image:alt"
+          content={image.alt}
+          key="twitter:image:alt"
+        />,
+      )
     }
   }
   if (cardType) {
-    metadata.push(<meta name="twitter:card" content={cardType} />)
+    metadata.push(
+      <meta name="twitter:card" content={cardType} key="twitter:card" />,
+    )
   }
   if (site) {
-    metadata.push(<meta name="twitter:site" content={site} />)
+    metadata.push(
+      <meta name="twitter:site" content={site} key="twitter:site" />,
+    )
   }
   if (handle) {
-    metadata.push(<meta name="twitter:creator" content={handle} />)
+    metadata.push(
+      <meta name="twitter:creator" content={handle} key="twitter:creator" />,
+    )
   }
 
   return metadata
