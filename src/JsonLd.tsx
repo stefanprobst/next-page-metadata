@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import * as React from 'react'
+import { jsonLdScriptProps } from 'react-schemaorg'
 import type { Thing, WithContext } from 'schema-dts'
 
 /**
@@ -20,13 +21,9 @@ export default function JsonLd<T extends Schema>({
 }: {
   schema: T
 }): JSX.Element {
-  const json = JSON.stringify(addContext(schema))
   return (
     <Head>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: json }}
-      />
+      <script {...jsonLdScriptProps<T>(addContext(schema))} />
     </Head>
   )
 }
