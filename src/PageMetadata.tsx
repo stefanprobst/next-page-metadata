@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import * as React from 'react'
+
 import type {
   OpenGraphArticle,
   OpenGraphImage,
@@ -19,6 +20,7 @@ export default function PageMetadata(props: PageMetadataProps): JSX.Element {
     titleTemplate,
     description,
     canonicalUrl,
+    language,
     languageAlternates,
     nofollow,
     noindex,
@@ -67,6 +69,7 @@ export default function PageMetadata(props: PageMetadataProps): JSX.Element {
         canonicalUrl: openGraph.canonicalUrl || canonicalUrl,
         title: openGraph.title || pageTitle,
         description: openGraph.description || description,
+        locale: openGraph.locale || language,
         localeAlternates:
           openGraph.localeAlternates != null
             ? openGraph.localeAlternates
@@ -145,15 +148,17 @@ function createOpenGraphMetadata(props: OpenGraphMetadata) {
     )
   }
   if (Array.isArray(localeAlternates)) {
-    localeAlternates.forEach((locale, index) => {
-      metadata.push(
-        <meta
-          property="og:locale:alternate"
-          content={locale}
-          key={`og:locale:alternate:${index}`}
-        />,
-      )
-    })
+    localeAlternates
+      .filter((alternate) => alternate !== locale)
+      .forEach((locale, index) => {
+        metadata.push(
+          <meta
+            property="og:locale:alternate"
+            content={locale}
+            key={`og:locale:alternate:${index}`}
+          />,
+        )
+      })
   }
   if (type === 'article' && article) {
     metadata.push(...createOpenGraphArticle(article))

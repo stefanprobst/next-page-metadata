@@ -10,6 +10,7 @@ export type PageMetadata = {
   noindex?: boolean
   nofollow?: boolean
 
+  language?: string
   languageAlternates?: Array<{ hrefLang: string; href: string }>
 
   openGraph?: OpenGraphMetadata
@@ -33,6 +34,7 @@ export type OpenGraphMetadata = {
   // | 'video.tv_show'
   // | 'video.other'
   siteName?: string
+  /** falls back to language */
   locale?: string
   /** falls back to languageAlternates */
   localeAlternates?: Array<string>

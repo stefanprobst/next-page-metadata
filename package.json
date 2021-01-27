@@ -1,6 +1,6 @@
 {
   "name": "@stefanprobst/next-page-metadata",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "source": "src/index.tsx",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
@@ -76,7 +76,10 @@
   "eslintConfig": {
     "extends": [
       "@stefanprobst/eslint-config-next-component"
-    ]
+    ],
+    "rules": {
+      "@typescript-eslint/strict-boolean-expressions": "off"
+    }
   },
   "husky": {
     "hooks": {
