@@ -3,18 +3,24 @@
  * @see https://github.com/developit/microbundle/issues/712#issuecomment-683794530
  */
 
-import JsonLd, { createJsonLd } from './JsonLd'
 import PageMetadata from './PageMetadata'
-Object.assign(PageMetadata, { JsonLd, createJsonLd })
+import SchemaOrg, { createJsonLd, createSchemaOrg } from './SchemaOrg'
+
+Object.assign(PageMetadata, {
+  SchemaOrg,
+  JsonLd: SchemaOrg,
+  createSchemaOrg,
+  createJsonLd,
+})
 export default PageMetadata
 export type { PageMetadataProps } from './PageMetadata'
+export type { Schema } from './SchemaOrg'
 export type {
-  PageMetadata,
   OpenGraphArticle,
   OpenGraphImage,
   OpenGraphMetadata,
   OpenGraphProfile,
+  PageMetadata,
   TwitterImage,
   TwitterMetadata,
 } from './types'
-export type { Schema } from './JsonLd'

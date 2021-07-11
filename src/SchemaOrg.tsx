@@ -8,7 +8,8 @@ import type { Thing, WithContext } from 'schema-dts'
  */
 export type Schema = Exclude<Thing, string>
 
-export function createJsonLd<T extends Thing>(schema: T): T {
+export const createJsonLd = createSchemaOrg
+export function createSchemaOrg<T extends Thing>(schema: T): T {
   return schema
 }
 
@@ -16,7 +17,7 @@ function addContext<T extends Schema>(schema: T): WithContext<T> {
   return { '@context': 'https://schema.org', ...schema }
 }
 
-export default function JsonLd<T extends Schema>({
+export default function SchemaOrg<T extends Schema>({
   schema,
 }: {
   schema: T
