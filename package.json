@@ -1,6 +1,6 @@
 {
   "name": "@stefanprobst/next-page-metadata",
-  "version": "1.0.10",
+  "version": "1.1.0",
   "source": "src/index.tsx",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
@@ -25,8 +25,8 @@
     "prepublishOnly": "yarn && yarn clean && yarn build"
   },
   "dependencies": {
-    "react-schemaorg": "^1.3.1",
-    "schema-dts": "^0.8.2"
+    "react-schemaorg": "^2.0.0",
+    "schema-dts": "^0.9.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
