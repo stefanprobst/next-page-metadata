@@ -1,18 +1,15 @@
 import Head from 'next/head'
-import * as React from 'react'
 
 import type {
   OpenGraphArticle,
   OpenGraphImage,
   OpenGraphMetadata,
   OpenGraphProfile,
-  PageMetadata,
+  PageMetadataProps,
   TwitterMetadata,
 } from './types'
 
-export type PageMetadataProps = PageMetadata
-
-export default function PageMetadata(props: PageMetadataProps): JSX.Element {
+export function PageMetadata(props: PageMetadataProps): JSX.Element {
   const metadata = []
 
   const {
@@ -28,16 +25,13 @@ export default function PageMetadata(props: PageMetadataProps): JSX.Element {
     twitter,
   } = props
 
-  const pageTitle =
-    typeof titleTemplate === 'function' ? titleTemplate(title) : title
+  const pageTitle = typeof titleTemplate === 'function' ? titleTemplate(title) : title
 
   if (pageTitle) {
     metadata.push(<title key="title">{pageTitle}</title>)
   }
   if (description) {
-    metadata.push(
-      <meta name="description" content={description} key="description" />,
-    )
+    metadata.push(<meta name="description" content={description} key="description" />)
   }
   if (canonicalUrl) {
     metadata.push(<link rel="canonical" href={canonicalUrl} key="canonical" />)
@@ -45,12 +39,7 @@ export default function PageMetadata(props: PageMetadataProps): JSX.Element {
   if (Array.isArray(languageAlternates)) {
     languageAlternates.forEach(({ hrefLang, href }) => {
       metadata.push(
-        <link
-          rel="alternate"
-          hrefLang={hrefLang}
-          href={href}
-          key={`alternate:${hrefLang}`}
-        />,
+        <link rel="alternate" hrefLang={hrefLang} href={href} key={`alternate:${hrefLang}`} />,
       )
     })
   }
@@ -58,9 +47,7 @@ export default function PageMetadata(props: PageMetadataProps): JSX.Element {
     const content = []
     if (noindex) content.push('noindex')
     if (nofollow) content.push('nofollow')
-    metadata.push(
-      <meta name="robots" content={content.join(',')} key="robots" />,
-    )
+    metadata.push(<meta name="robots" content={content.join(',')} key="robots" />)
   }
   if (openGraph) {
     metadata.push(
@@ -73,8 +60,7 @@ export default function PageMetadata(props: PageMetadataProps): JSX.Element {
         localeAlternates:
           openGraph.localeAlternates != null
             ? openGraph.localeAlternates
-            : languageAlternates &&
-              languageAlternates.map(({ hrefLang }) => hrefLang),
+            : languageAlternates && languageAlternates.map(({ hrefLang }) => hrefLang),
       }),
     )
   }
@@ -113,21 +99,13 @@ function createOpenGraphMetadata(props: OpenGraphMetadata) {
   } = props
 
   if (canonicalUrl) {
-    metadata.push(
-      <meta property="og:url" content={canonicalUrl} key="og:url" />,
-    )
+    metadata.push(<meta property="og:url" content={canonicalUrl} key="og:url" />)
   }
   if (title) {
     metadata.push(<meta property="og:title" content={title} key="og:title" />)
   }
   if (description) {
-    metadata.push(
-      <meta
-        property="og:description"
-        content={description}
-        key="og:description"
-      />,
-    )
+    metadata.push(<meta property="og:description" content={description} key="og:description" />)
   }
   if (Array.isArray(images)) {
     images.forEach((image, index) => {
@@ -138,14 +116,10 @@ function createOpenGraphMetadata(props: OpenGraphMetadata) {
     metadata.push(<meta property="og:type" content={type} key="og:type" />)
   }
   if (siteName) {
-    metadata.push(
-      <meta property="og:site_name" content={siteName} key="og:site_name" />,
-    )
+    metadata.push(<meta property="og:site_name" content={siteName} key="og:site_name" />)
   }
   if (locale) {
-    metadata.push(
-      <meta property="og:locale" content={locale} key="og:locale" />,
-    )
+    metadata.push(<meta property="og:locale" content={locale} key="og:locale" />)
   }
   if (Array.isArray(localeAlternates)) {
     localeAlternates
@@ -176,47 +150,27 @@ function createTwitterhMetadata(props: TwitterMetadata) {
   const { title, description, image, cardType, site, handle } = props
 
   if (title) {
-    metadata.push(
-      <meta name="twitter:title" content={title} key="twitter:title" />,
-    )
+    metadata.push(<meta name="twitter:title" content={title} key="twitter:title" />)
   }
   if (description) {
     metadata.push(
-      <meta
-        name="twitter:description"
-        content={description}
-        key="twitter:description"
-      />,
+      <meta name="twitter:description" content={description} key="twitter:description" />,
     )
   }
   if (image) {
-    metadata.push(
-      <meta name="twitter:image" content={image.src} key="twitter:image" />,
-    )
+    metadata.push(<meta name="twitter:image" content={image.src} key="twitter:image" />)
     if (image.alt) {
-      metadata.push(
-        <meta
-          name="twitter:image:alt"
-          content={image.alt}
-          key="twitter:image:alt"
-        />,
-      )
+      metadata.push(<meta name="twitter:image:alt" content={image.alt} key="twitter:image:alt" />)
     }
   }
   if (cardType) {
-    metadata.push(
-      <meta name="twitter:card" content={cardType} key="twitter:card" />,
-    )
+    metadata.push(<meta name="twitter:card" content={cardType} key="twitter:card" />)
   }
   if (site) {
-    metadata.push(
-      <meta name="twitter:site" content={site} key="twitter:site" />,
-    )
+    metadata.push(<meta name="twitter:site" content={site} key="twitter:site" />)
   }
   if (handle) {
-    metadata.push(
-      <meta name="twitter:creator" content={handle} key="twitter:creator" />,
-    )
+    metadata.push(<meta name="twitter:creator" content={handle} key="twitter:creator" />)
   }
 
   return metadata
@@ -227,34 +181,18 @@ function createOpenGraphImage(props: OpenGraphImage, index: number) {
 
   const { src, alt, width, height } = props
 
-  metadata.push(
-    <meta property="og:image" content={src} key={`og:image:${index}`} />,
-  )
+  metadata.push(<meta property="og:image" content={src} key={`og:image:${index}`} />)
   if (alt) {
-    metadata.push(
-      <meta
-        property="og:image:alt"
-        content={alt}
-        key={`og:image:alt:${index}`}
-      />,
-    )
+    metadata.push(<meta property="og:image:alt" content={alt} key={`og:image:alt:${index}`} />)
   }
   if (width) {
     metadata.push(
-      <meta
-        property="og:image:width"
-        content={String(width)}
-        key={`og:image:width:${index}`}
-      />,
+      <meta property="og:image:width" content={String(width)} key={`og:image:width:${index}`} />,
     )
   }
   if (height) {
     metadata.push(
-      <meta
-        property="og:image:height"
-        content={String(height)}
-        key={`og:image:height:${index}`}
-      />,
+      <meta property="og:image:height" content={String(height)} key={`og:image:height:${index}`} />,
     )
   }
 
@@ -264,14 +202,7 @@ function createOpenGraphImage(props: OpenGraphImage, index: number) {
 function createOpenGraphArticle(props: OpenGraphArticle) {
   const metadata = []
 
-  const {
-    publishedTime,
-    modifiedTime,
-    expirationTime,
-    authors,
-    section,
-    tags,
-  } = props
+  const { publishedTime, modifiedTime, expirationTime, authors, section, tags } = props
 
   if (publishedTime) {
     metadata.push(
@@ -284,11 +215,7 @@ function createOpenGraphArticle(props: OpenGraphArticle) {
   }
   if (modifiedTime) {
     metadata.push(
-      <meta
-        property="article:modified_time"
-        content={modifiedTime}
-        key="article:modified_time"
-      />,
+      <meta property="article:modified_time" content={modifiedTime} key="article:modified_time" />,
     )
   }
   if (expirationTime) {
@@ -303,28 +230,16 @@ function createOpenGraphArticle(props: OpenGraphArticle) {
   if (Array.isArray(authors)) {
     authors.forEach((author, index) => {
       metadata.push(
-        <meta
-          property={`article:author:${index}`}
-          content={author}
-          key="article:author"
-        />,
+        <meta property={`article:author:${index}`} content={author} key="article:author" />,
       )
     })
   }
   if (section) {
-    metadata.push(
-      <meta
-        property="article:section"
-        content={section}
-        key="article:section"
-      />,
-    )
+    metadata.push(<meta property="article:section" content={section} key="article:section" />)
   }
   if (Array.isArray(tags)) {
     tags.forEach((tag, i) => {
-      metadata.push(
-        <meta property={`article:tag:${i}`} content={tag} key="article:tag" />,
-      )
+      metadata.push(<meta property={`article:tag:${i}`} content={tag} key="article:tag" />)
     })
   }
 
@@ -336,35 +251,17 @@ function createOpenGraphProfile(props: OpenGraphProfile) {
 
   const { firstName, lastName, username, gender } = props
 
-  metadata.push(
-    <meta
-      property="profile:last_name"
-      content={lastName}
-      key="profile:last_name"
-    />,
-  )
+  metadata.push(<meta property="profile:last_name" content={lastName} key="profile:last_name" />)
   if (firstName) {
     metadata.push(
-      <meta
-        property="profile:first_name"
-        content={firstName}
-        key="profile:first_name"
-      />,
+      <meta property="profile:first_name" content={firstName} key="profile:first_name" />,
     )
   }
   if (username) {
-    metadata.push(
-      <meta
-        property="profile:username"
-        content={username}
-        key="profile:username"
-      />,
-    )
+    metadata.push(<meta property="profile:username" content={username} key="profile:username" />)
   }
   if (gender) {
-    metadata.push(
-      <meta property="profile:gender" content={gender} key="profile:gender" />,
-    )
+    metadata.push(<meta property="profile:gender" content={gender} key="profile:gender" />)
   }
 
   return metadata

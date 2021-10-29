@@ -1,20 +1,12 @@
-import PageMetadata from './PageMetadata'
-
-export {
-  createJsonLd,
-  createSchemaOrg,
-  default as JsonLd,
-  default as SchemaOrg,
-} from './SchemaOrg'
-export default PageMetadata
-export type { PageMetadataProps } from './PageMetadata'
+export { PageMetadata } from './PageMetadata'
 export type { Schema } from './SchemaOrg'
+export { createSchemaOrg, SchemaOrg } from './SchemaOrg'
 export type {
   OpenGraphArticle,
   OpenGraphImage,
   OpenGraphMetadata,
   OpenGraphProfile,
-  PageMetadata,
+  PageMetadataProps,
   TwitterImage,
   TwitterMetadata,
 } from './types'

@@ -1,6 +1,6 @@
 import type { DateTime, URL } from 'schema-dts'
 
-export type PageMetadata = {
+export type PageMetadataProps = {
   title?: string
   titleTemplate?: (title?: string) => string
   /** max. 250 characters */
