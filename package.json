@@ -1,11 +1,12 @@
 {
   "name": "@stefanprobst/next-page-metadata",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "type": "module",
   "main": "dist/cjs/index.js",
   "exports": {
     "import": "./dist/index.js",
-    "require": "./dist/cjs/index.js"
+    "require": "./dist/cjs/index.js",
+    "types": "./dist/index.d.ts"
   },
   "types": "dist/index.d.ts",
   "repository": "git@github.com:stefanprobst/next-page-metadata",
