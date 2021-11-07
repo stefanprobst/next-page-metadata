@@ -1,14 +1,8 @@
 {
   "name": "@stefanprobst/next-page-metadata",
-  "version": "2.0.3",
-  "type": "module",
+  "version": "2.0.4",
   "main": "dist/cjs/index.js",
   "types": "dist/cjs/index.d.ts",
-  "exports": {
-    "types": "./dist/index.d.ts",
-    "import": "./dist/index.js",
-    "require": "./dist/cjs/index.js"
-  },
   "repository": "git@github.com:stefanprobst/next-page-metadata",
   "license": "MIT",
   "files": [
