@@ -1,6 +1,14 @@
-import Head from 'next/head.js'
+import HeadModule from 'next/head.js'
 import { jsonLdScriptProps } from 'react-schemaorg'
 import type { Thing, WithContext } from 'schema-dts'
+
+/**
+ * Nwxt.js only provides CommonJs exports.
+ *
+ * @see https://github.com/vercel/next.js/issues/30402
+ */
+/* @ts-expect-error CommonJS module. */
+const { default: Head } = HeadModule
 
 /**
  * @see https://github.com/google/schema-dts/issues/98

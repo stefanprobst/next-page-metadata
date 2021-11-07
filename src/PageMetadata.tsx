@@ -1,4 +1,4 @@
-import Head from 'next/head.js'
+import HeadModule from 'next/head.js'
 
 import type {
   OpenGraphArticle,
@@ -8,6 +8,14 @@ import type {
   PageMetadataProps,
   TwitterMetadata,
 } from './types.js'
+
+/**
+ * Nwxt.js only provides CommonJs exports.
+ *
+ * @see https://github.com/vercel/next.js/issues/30402
+ */
+/* @ts-expect-error CommonJS module. */
+const { default: Head } = HeadModule
 
 export function PageMetadata(props: PageMetadataProps): JSX.Element {
   const metadata = []
