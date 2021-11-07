@@ -1,9 +1,9 @@
 {
   "name": "@stefanprobst/next-page-metadata",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "type": "module",
   "main": "dist/cjs/index.js",
-  "types": "dist/index.d.ts",
+  "types": "dist/cjs/index.d.ts",
   "exports": {
     "types": "./dist/index.d.ts",
     "import": "./dist/index.js",

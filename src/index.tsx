@@ -1,6 +1,6 @@
-export { PageMetadata } from './PageMetadata'
-export type { Schema } from './SchemaOrg'
-export { createSchemaOrg, SchemaOrg } from './SchemaOrg'
+export { PageMetadata } from './PageMetadata.js'
+export type { Schema } from './SchemaOrg.js'
+export { createSchemaOrg, SchemaOrg } from './SchemaOrg.js'
 export type {
   OpenGraphArticle,
   OpenGraphImage,
@@ -9,4 +9,4 @@ export type {
   PageMetadataProps,
   TwitterImage,
   TwitterMetadata,
-} from './types'
+} from './types.js'

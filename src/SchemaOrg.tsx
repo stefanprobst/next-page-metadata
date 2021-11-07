@@ -1,4 +1,4 @@
-import Head from 'next/head'
+import Head from 'next/head.js'
 import { jsonLdScriptProps } from 'react-schemaorg'
 import type { Thing, WithContext } from 'schema-dts'
 

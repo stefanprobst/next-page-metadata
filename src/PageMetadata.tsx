@@ -1,4 +1,4 @@
-import Head from 'next/head'
+import Head from 'next/head.js'
 
 import type {
   OpenGraphArticle,
@@ -7,7 +7,7 @@ import type {
   OpenGraphProfile,
   PageMetadataProps,
   TwitterMetadata,
-} from './types'
+} from './types.js'
 
 export function PageMetadata(props: PageMetadataProps): JSX.Element {
   const metadata = []
