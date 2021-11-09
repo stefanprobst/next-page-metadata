@@ -1,6 +1,6 @@
 {
   "name": "@stefanprobst/next-page-metadata",
-  "version": "2.0.5",
+  "version": "2.0.5-compat",
   "type": "module",
   "main": "dist/cjs/index.js",
   "types": "dist/cjs/index.d.ts",

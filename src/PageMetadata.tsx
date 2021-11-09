@@ -1,4 +1,5 @@
 import HeadModule from 'next/head.js'
+import * as React from 'react'
 
 import type {
   OpenGraphArticle,

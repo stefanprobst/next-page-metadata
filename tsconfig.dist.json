@@ -3,7 +3,9 @@
   "compilerOptions": {
     "outDir": "dist",
     "declaration": true,
-    "sourceMap": true
+    "sourceMap": true,
+    /** React before version 18 does not have correct package exports to resolve `react/jsx-runtime` without file extension, so we cannot use "react-jsx" here` */
+    "jsx": "react"
   },
   "include": ["src"]
 }
