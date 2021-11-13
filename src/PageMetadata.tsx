@@ -68,7 +68,10 @@ export function PageMetadata(props: PageMetadataProps): JSX.Element {
         localeAlternates:
           openGraph.localeAlternates != null
             ? openGraph.localeAlternates
-            : languageAlternates && languageAlternates.map(({ hrefLang }) => hrefLang),
+            : languageAlternates &&
+              languageAlternates.map(({ hrefLang }) => {
+                return hrefLang
+              }),
       }),
     )
   }
@@ -131,7 +134,9 @@ function createOpenGraphMetadata(props: OpenGraphMetadata) {
   }
   if (Array.isArray(localeAlternates)) {
     localeAlternates
-      .filter((alternate) => alternate !== locale)
+      .filter((alternate) => {
+        return alternate !== locale
+      })
       .forEach((locale, index) => {
         metadata.push(
           <meta
